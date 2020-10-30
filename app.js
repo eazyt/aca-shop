@@ -2,6 +2,7 @@ require('dotenv').config()
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
+
 const app = express()
 const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
@@ -16,8 +17,12 @@ app.use('/admin', adminRoutes)
 app.use(shopRoutes)
 
 app.use((req, res, next) => { 
-  res.status(404).send('<h1>Page Not Found</h1>')
-  next()
+  console.log('Not Found Middleware')
+  // res.sendFile(path.join(__dirname, 'views', '404.html'))
+    // res.sendFile(path.join(__dirname, 'views', '404.html'))
+  res.sendFile(path.join(__dirname, 'views', '404.html'))
+  // res.send('Not FOUNDS')
+  // next()
 })
 
 app.listen(PORT, () => { 
