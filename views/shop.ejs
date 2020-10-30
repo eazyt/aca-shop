@@ -1,0 +1,39 @@
+<%- include('includes/header') %>
+
+</head>
+
+<body>
+  
+  <%- include('includes/nav') %>
+
+  <main>
+    <% if(prods.length > 0) {%>
+      <div class="grid">
+        <% for (let product of prods) { %>
+          <article class="card product-item">
+        <header class="card__reader">
+          <h1 class="product__title">
+            <%= product.title %>
+          </h1>
+        </header>
+        <div class="card__image">
+          <img src="https://source.unsplash.com/random/320x200" alt="A Book">
+        </div>
+        <div class="card__content">
+          <h2 class="product__price">
+            R139.99
+          </h2>
+          <p class="product__description">A very interesting book about flowers</p>
+        </div>
+        <div class="card__actions">
+          <button class="btn">Add to Cart</button>
+        </div>
+      </article>
+      <% } %>
+    </div>
+    <% } else { %>
+      <h1>No Products Found</h1>
+      <% } %>
+    </main>
+    
+    <%- include('includes/footer') %>
